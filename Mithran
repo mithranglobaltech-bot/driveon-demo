@@ -1,0 +1,69 @@
+driveon-demo/
+├── app/
+│   ├── page.tsx
+│   ├── customer/page.tsx
+│   ├── driver/page.tsx
+│   ├── admin/page.tsx
+│   ├── layout.tsx
+│   └── globals.css
+├── package.json
+└── tailwind.config.js
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body style={{ margin: 0, fontFamily: "Inter, sans-serif" }}>
+        {children}
+      </body>
+    </html>
+  );
+}
+"use client";
+import { useRouter } from "next/navigation";
+
+export default function Home() {
+  const r = useRouter();
+  return (
+    <div style={{height:"100vh",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:16}}>
+      <h1>🚘 Driveon Demo</h1>
+      <button onClick={()=>r.push("/customer")}>Customer App</button>
+      <button onClick={()=>r.push("/driver")}>Driver App</button>
+      <button onClick={()=>r.push("/admin")}>Admin Dashboard</button>
+    </div>
+  );
+}
+export default function Customer() {
+  return (
+    <div style={{padding:20}}>
+      <h2>Customer App</h2>
+      <div style={{height:200,background:"#cce5ff",borderRadius:12,margin:"16px 0"}}>
+        Fake GPS Map
+      </div>
+      <button>Book Driver</button>
+    </div>
+  );
+}
+export default function Driver() {
+  return (
+    <div style={{padding:20}}>
+      <h2>Driver App</h2>
+      <div style={{background:"#f4f4f4",padding:16,borderRadius:12}}>
+        New Trip Request
+      </div>
+    </div>
+  );
+}
+export default function Admin() {
+  return (
+    <div style={{padding:20}}>
+      <h2>Admin Dashboard</h2>
+      <p>Trips Today: 124</p>
+      <p>Drivers Online: 58</p>
+    </div>
+  );
+}
+git init
+git add .
+git commit -m "Driveon live demo"
+git branch -M main
+git remote add origin https://github.com/mithranglobaltech-bot//driveon-demo.git
+git push -u origin main
